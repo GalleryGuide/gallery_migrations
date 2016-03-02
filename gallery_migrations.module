@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains gallery_migrations.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function gallery_migrations_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the gallery_migrations module.
+    case 'help.page.gallery_migrations':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom Migrations for The Gallery Guide') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function gallery_migrations_theme() {
+  $theme = [];
+
+  return $theme;
+}

@@ -1,0 +1,11 @@
+name: Gallery Migrations
+type: module
+description: Custom Migrations for The Gallery Guide
+core: 8.x
+package: The Gallery Guide
+
+dependencies:
+  - migrate_plus
+  - migrate_tools
+  - migrate_upgrade
+  - migrate_drupal
