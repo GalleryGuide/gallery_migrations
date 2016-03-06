@@ -1,23 +1,17 @@
-uuid: 1bcb3d65-5272-457e-9903-3abd05382472
+uuid: 4c1c01f0-081f-4fc7-8500-d5ca97975d1b
 langcode: en
 status: true
 dependencies:
   config:
-    - migrate.migration.d6_filter_format
-    - migrate.migration.d6_node_settings
-    - migrate.migration.d6_node_type
-    - migrate.migration.d6_user
+    - migrate.migration.d6_node__gallery
   module:
-    - gallery_migrations
     - node
-_core:
-  default_config_hash: 9gd2ZOsdaToxP9KORXjK7vK69aokm0yQ7Wrwn7S3TQ0
-id: d6_node__gallery
+id: d6_node_revision__gallery
 migration_tags:
   - 'Drupal 6'
-label: 'Nodes (gallery)'
+label: 'Node revisions (gallery)'
 source:
-  plugin: d6_node__gallery
+  plugin: d6_node_revision
   database_state_key: migrate_upgrade_6
   node_type: gallery
 process:
@@ -79,16 +73,9 @@ process:
   field_email: field_email
   field_owner: field_owner
 destination:
-  plugin: 'entity:node'
-template: d6_node
+  plugin: 'entity_revision:node'
+template: d6_node_revision
 migration_dependencies:
   required:
-    - d6_user
-    - d6_node_type
-    - d6_node_settings
-    - d6_filter_format
-  optional:
-    - d6_field_instance_widget_settings
-    - d6_field_formatter_settings
-    - d6_upload_field_instance
+    - d6_node__gallery
 migration_group: null

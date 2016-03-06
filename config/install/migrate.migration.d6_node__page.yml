@@ -1,22 +1,22 @@
-uuid: 3d1f2a4f-6ddb-49c7-b30b-11d1273cb810
+uuid: dd2e91f0-1d9c-4b6d-8d00-0a8d0e7372fa
 langcode: en
 status: true
 dependencies:
   config:
+    - migrate.migration.d6_filter_format
     - migrate.migration.d6_node_settings
+    - migrate.migration.d6_node_type
     - migrate.migration.d6_user
   module:
     - node
-_core:
-  default_config_hash: 3S-iHGw_rWTrhEvYKdT1gir99JFBg8lfCeRBl6mtBs0
-id: d6_node__exhibition
+id: d6_node__page
 migration_tags:
   - 'Drupal 6'
-label: 'Nodes (exhibition)'
+label: 'Nodes (page)'
 source:
   plugin: d6_node
   database_state_key: migrate_upgrade_6
-  node_type: exhibition
+  node_type: page
 process:
   nid: nid
   vid: vid
@@ -41,23 +41,15 @@ process:
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp
-  field_exhib_gallery: field_exhib_gallery
-  field_exhib_website:
-    plugin: d6_cck_link
-    source: field_exhib_website
-  field_exhib_dates: field_exhib_dates
-  field_admission_std: field_admission_std
-  field_admission_conc: field_admission_conc
-  field_images:
-    plugin: d6_cck_file
-    source: field_images
 destination:
   plugin: 'entity:node'
 template: d6_node
 migration_dependencies:
   required:
     - d6_user
+    - d6_node_type
     - d6_node_settings
+    - d6_filter_format
   optional:
     - d6_field_instance_widget_settings
     - d6_field_formatter_settings

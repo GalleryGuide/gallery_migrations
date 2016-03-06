@@ -1,0 +1,39 @@
+uuid: febc8ec0-18a3-4b6a-ad00-b7a3e27ac9c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - migrate.migration.d6_upload_field_instance
+  module:
+    - file
+    - node
+id: d6_upload_entity_display
+migration_tags:
+  - 'Drupal 6'
+label: 'Upload display configuration'
+source:
+  plugin: d6_upload_instance
+  constants:
+    entity_type: node
+    view_mode: default
+    name: upload
+    type: file_default
+    options:
+      label: hidden
+      settings: {  }
+  database_state_key: migrate_upgrade_6
+process:
+  entity_type: constants/entity_type
+  bundle: node_type
+  view_mode: constants/view_mode
+  field_name: constants/name
+  type: constants/type
+  options: constants/options
+  options/type: '@type'
+destination:
+  plugin: component_entity_display
+template: d6_upload_entity_display
+migration_dependencies:
+  required:
+    - d6_upload_field_instance
+migration_group: null

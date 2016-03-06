@@ -1,0 +1,47 @@
+uuid: 602f31c9-b692-458d-8600-fa07b877bb99
+langcode: en
+status: true
+dependencies:
+  module:
+    - field
+    - migrate_drupal
+    - user
+id: user_profile_field
+migration_tags:
+  - 'Drupal 6'
+  - 'Drupal 7'
+label: 'User profile field configuration'
+source:
+  plugin: profile_field
+  constants:
+    entity_type: user
+  database_state_key: migrate_upgrade_6
+process:
+  entity_type: constants/entity_type
+  field_name: name
+  type:
+    plugin: static_map
+    source: type
+    map:
+      checkbox: boolean
+      date: datetime
+      list: text
+      selection: list_string
+      textfield: text
+      textarea: text_long
+      url: link
+  settings:
+    plugin: profile_field_settings
+    source: type
+  settings/allowed_values: options
+  cardinality:
+    plugin: static_map
+    default_value: 1
+    source: type
+    map:
+      list: -1
+destination:
+  plugin: 'md_entity:field_storage_config'
+template: user_profile_field
+migration_dependencies: {  }
+migration_group: null

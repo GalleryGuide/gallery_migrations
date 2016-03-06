@@ -1,0 +1,33 @@
+uuid: 1e56a1bf-432f-49d5-9e07-7ab9d38362eb
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+id: contact_category
+migration_tags:
+  - 'Drupal 6'
+  - 'Drupal 7'
+label: 'Contact category configuration'
+source:
+  plugin: contact_category
+  database_state_key: migrate_upgrade_6
+process:
+  id:
+    -
+      plugin: machine_name
+      source: category
+    -
+      plugin: dedupe_entity
+      entity_type: user_role
+      field: cid
+      length: 32
+  label: category
+  recipients: recipients
+  reply: reply
+  weight: weight
+destination:
+  plugin: 'entity:contact_form'
+template: contact_category
+migration_dependencies: {  }
+migration_group: null

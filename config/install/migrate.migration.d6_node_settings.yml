@@ -1,0 +1,24 @@
+uuid: 9919b080-744a-4d0b-a000-f08e616f151e
+langcode: en
+status: true
+dependencies:
+  module:
+    - migrate_drupal
+    - node
+id: d6_node_settings
+migration_tags:
+  - 'Drupal 6'
+label: 'Node configuration'
+source:
+  plugin: variable
+  variables:
+    - node_admin_theme
+  database_state_key: migrate_upgrade_6
+process:
+  use_admin_theme: node_admin_theme
+destination:
+  plugin: config
+  config_name: node.settings
+template: d6_node_settings
+migration_dependencies: {  }
+migration_group: null

@@ -9,6 +9,8 @@ dependencies:
     - migrate.migration.d6_user
   module:
     - node
+_core:
+  default_config_hash: IeQ8pCnFj5-pDOoUwp9SaFN_yNZw7NHy6KC-yqENEm4
 id: d6_node__artist
 migration_tags:
   - 'Drupal 6'

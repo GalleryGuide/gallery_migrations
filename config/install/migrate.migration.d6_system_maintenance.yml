@@ -1,0 +1,24 @@
+uuid: eb2a72ec-3f2f-4ca3-a25a-90bf1be8ae60
+langcode: en
+status: true
+dependencies:
+  module:
+    - migrate_drupal
+    - system
+id: d6_system_maintenance
+migration_tags:
+  - 'Drupal 6'
+label: 'Maintenance page configuration'
+source:
+  plugin: variable
+  variables:
+    - site_offline_message
+  database_state_key: migrate_upgrade_6
+process:
+  message: site_offline_message
+destination:
+  plugin: config
+  config_name: system.maintenance
+template: d6_system_maintenance
+migration_dependencies: {  }
+migration_group: null

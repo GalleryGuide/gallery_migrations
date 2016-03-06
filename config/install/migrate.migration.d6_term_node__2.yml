@@ -1,0 +1,50 @@
+uuid: 2ce3c8ed-935e-4e5d-b207-7cf854955653
+langcode: en
+status: true
+dependencies:
+  config:
+    - migrate.migration.d6_node__artist
+    - migrate.migration.d6_node__exhibition
+    - migrate.migration.d6_node__faqs
+    - migrate.migration.d6_node__feed
+    - migrate.migration.d6_node__feed_item
+    - migrate.migration.d6_node__gallery
+    - migrate.migration.d6_node__gallery_online
+    - migrate.migration.d6_node__link
+    - migrate.migration.d6_node__page
+    - migrate.migration.d6_node__poll
+    - migrate.migration.d6_node__story
+    - migrate.migration.d6_node__webform
+    - migrate.migration.d6_vocabulary_entity_display
+    - migrate.migration.d6_vocabulary_entity_form_display
+  module:
+    - node
+    - taxonomy
+id: d6_term_node__2
+migration_tags:
+  - 'Drupal 6'
+label: 'Term/node relationships'
+source:
+  plugin: d6_term_node
+  database_state_key: migrate_upgrade_6
+  vid: 2
+process:
+  nid:
+    -
+      plugin: migration
+      migration: 'd6_node:*'
+      source: nid
+    -
+      plugin: skip_on_empty
+      method: row
+  type: type
+  artists: tid
+destination:
+  plugin: 'entity:node'
+template: d6_term_node
+migration_dependencies:
+  required:
+    - d6_vocabulary_entity_display
+    - d6_vocabulary_entity_form_display
+    - 'd6_node:*'
+migration_group: null
