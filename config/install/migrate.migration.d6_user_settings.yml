@@ -19,7 +19,6 @@ source:
     - user_email_verification
     - user_register
     - anonymous
-  database_state_key: migrate_upgrade_6
 process:
   notify/status_blocked: user_mail_status_blocked_notify
   notify/status_activated: user_mail_status_activated_notify
@@ -38,4 +37,4 @@ destination:
   config_name: user.settings
 template: d6_user_settings
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

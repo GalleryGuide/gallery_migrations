@@ -14,7 +14,6 @@ migration_tags:
 label: Blocks
 source:
   plugin: block
-  database_state_key: migrate_upgrade_6
 process:
   status:
     plugin: skip_on_empty
@@ -105,4 +104,4 @@ migration_dependencies:
     - menu
     - d6_custom_block
     - d6_user_role
-migration_group: null
+migration_group: gall

@@ -12,7 +12,6 @@ source:
   plugin: d6_url_alias
   constants:
     slash: /
-  database_state_key: migrate_upgrade_6
 process:
   source:
     plugin: concat
@@ -31,4 +30,4 @@ destination:
   plugin: url_alias
 template: d6_url_alias
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

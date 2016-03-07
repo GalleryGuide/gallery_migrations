@@ -19,7 +19,6 @@ source:
     - search_cron_limit
     - search_tag_weights
     - search_and_or_limit
-  database_state_key: migrate_upgrade_6
 process:
   index/minimum_word_size: minimum_word_size
   index/overlap_cjk: overlap_cjk
@@ -30,4 +29,4 @@ destination:
   config_name: search.settings
 template: d6_search_settings
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

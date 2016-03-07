@@ -15,7 +15,6 @@ source:
     - cron_threshold_warning
     - cron_threshold_error
     - cron_last
-  database_state_key: migrate_upgrade_6
 process:
   threshold/requirements_warning: cron_threshold_warning
   threshold/requirements_error: cron_threshold_error
@@ -24,4 +23,4 @@ destination:
   config_name: system.cron
 template: d6_system_cron
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

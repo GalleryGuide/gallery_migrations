@@ -21,7 +21,6 @@ source:
       label: hidden
       type: comment_default
       weight: 20
-  database_state_key: migrate_upgrade_6
 process:
   entity_type: constants/entity_type
   field_name: constants/field_name
@@ -34,4 +33,4 @@ template: d6_comment_entity_display
 migration_dependencies:
   required:
     - d6_comment_field_instance
-migration_group: null
+migration_group: gall

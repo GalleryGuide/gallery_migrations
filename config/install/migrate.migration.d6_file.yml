@@ -10,7 +10,6 @@ migration_tags:
 label: Files
 source:
   plugin: d6_file
-  database_state_key: migrate_upgrade_6
 process:
   fid: fid
   filename: filename
@@ -32,4 +31,4 @@ destination:
   source_base_path: 'http://drupal6.dev/'
 template: d6_file
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

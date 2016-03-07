@@ -11,7 +11,6 @@ migration_tags:
 label: Menus
 source:
   plugin: menu
-  database_state_key: migrate_upgrade_6
 process:
   id: menu_name
   label: title
@@ -20,4 +19,4 @@ destination:
   plugin: 'entity:menu'
 template: menu
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

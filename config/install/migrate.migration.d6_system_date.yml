@@ -15,7 +15,6 @@ source:
     - configurable_timezones
     - date_first_day
     - date_default_timezone
-  database_state_key: migrate_upgrade_6
 process:
   timezone/user/configurable: configurable_timezones
   first_day: date_first_day
@@ -27,4 +26,4 @@ destination:
   config_name: system.date
 template: d6_system_date
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

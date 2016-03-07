@@ -18,7 +18,6 @@ migration_tags:
 label: 'Nodes (gallery)'
 source:
   plugin: d6_node__gallery
-  database_state_key: migrate_upgrade_6
   node_type: gallery
 process:
   nid: nid
@@ -91,4 +90,4 @@ migration_dependencies:
     - d6_field_instance_widget_settings
     - d6_field_formatter_settings
     - d6_upload_field_instance
-migration_group: null
+migration_group: gall

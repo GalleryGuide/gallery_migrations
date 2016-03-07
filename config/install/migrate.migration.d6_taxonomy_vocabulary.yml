@@ -10,7 +10,6 @@ migration_tags:
 label: 'Taxonomy vocabularies'
 source:
   plugin: d6_taxonomy_vocabulary
-  database_state_key: migrate_upgrade_6
 process:
   vid:
     -
@@ -30,4 +29,4 @@ destination:
   plugin: 'entity:taxonomy_vocabulary'
 template: d6_taxonomy_vocabulary
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

@@ -27,7 +27,6 @@ source:
       type: string
     field_name:
       type: string
-  database_state_key: migrate_upgrade_6
 process:
   entity_type: entity_type
   bundle: bundle
@@ -40,4 +39,4 @@ template: block_content_body_field
 migration_dependencies:
   required:
     - block_content_type
-migration_group: null
+migration_group: gall

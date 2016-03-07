@@ -18,7 +18,6 @@ source:
   constants:
     entity_type: node
     type: comment
-  database_state_key: migrate_upgrade_6
 process:
   entity_type: constants/entity_type
   field_name: comment_type
@@ -30,4 +29,4 @@ template: d6_comment_field
 migration_dependencies:
   required:
     - d6_comment_type
-migration_group: null
+migration_group: gall

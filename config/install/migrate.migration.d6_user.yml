@@ -14,7 +14,6 @@ migration_tags:
 label: 'User accounts'
 source:
   plugin: d6_user
-  database_state_key: migrate_upgrade_6
 process:
   uid: uid
   name: name
@@ -48,4 +47,4 @@ migration_dependencies:
     - d6_user_picture_file
     - user_picture_entity_display
     - user_picture_entity_form_display
-migration_group: null
+migration_group: gall

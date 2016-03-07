@@ -26,7 +26,6 @@ source:
     - user_mail_register_pending_approval_body
     - user_mail_status_blocked_subject
     - user_mail_status_blocked_body
-  database_state_key: migrate_upgrade_6
 process:
   status_activated/subject:
     plugin: convert_tokens
@@ -75,4 +74,4 @@ destination:
   config_name: user.mail
 template: d6_user_mail
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

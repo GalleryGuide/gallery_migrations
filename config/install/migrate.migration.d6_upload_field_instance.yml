@@ -20,7 +20,6 @@ source:
     name: upload
     settings:
       description_field: 1
-  database_state_key: migrate_upgrade_6
 process:
   entity_type: constants/entity_type
   bundle:
@@ -42,4 +41,4 @@ migration_dependencies:
   required:
     - d6_upload_field
     - d6_node_type
-migration_group: null
+migration_group: gall

@@ -13,7 +13,6 @@ source:
   plugin: variable
   variables:
     - node_admin_theme
-  database_state_key: migrate_upgrade_6
 process:
   use_admin_theme: node_admin_theme
 destination:
@@ -21,4 +20,4 @@ destination:
   config_name: node.settings
 template: d6_node_settings
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

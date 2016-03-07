@@ -13,7 +13,6 @@ source:
   plugin: d6_comment_variable_per_comment_type
   constants:
     entity_type: node
-  database_state_key: migrate_upgrade_6
 process:
   target_entity_type_id: constants/entity_type
   id: comment_type
@@ -23,4 +22,4 @@ destination:
   plugin: 'entity:comment_type'
 template: d6_comment_type
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

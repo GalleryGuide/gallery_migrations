@@ -10,7 +10,6 @@ migration_tags:
 label: 'ImageCache Presets'
 source:
   plugin: d6_imagecache_presets
-  database_state_key: migrate_upgrade_6
 process:
   name:
     -
@@ -31,4 +30,4 @@ destination:
   plugin: 'entity:image_style'
 template: d6_imagecache_presets
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

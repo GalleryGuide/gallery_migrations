@@ -22,7 +22,6 @@ source:
   plugin: d6_comment
   constants:
     entity_type: node
-  database_state_key: migrate_upgrade_6
 process:
   cid: cid
   pid:
@@ -59,4 +58,4 @@ migration_dependencies:
     - d6_comment_entity_form_display
     - d6_user
     - d6_filter_format
-migration_group: null
+migration_group: gall

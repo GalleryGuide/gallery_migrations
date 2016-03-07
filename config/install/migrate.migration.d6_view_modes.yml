@@ -13,7 +13,6 @@ source:
   constants:
     targetEntityType: node
     status: true
-  database_state_key: migrate_upgrade_6
 process:
   mode:
     plugin: static_map
@@ -45,4 +44,4 @@ destination:
   plugin: 'entity:entity_view_mode'
 template: d6_view_modes
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

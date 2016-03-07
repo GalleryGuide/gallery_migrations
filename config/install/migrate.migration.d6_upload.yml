@@ -17,7 +17,6 @@ migration_tags:
 label: 'File uploads'
 source:
   plugin: d6_upload
-  database_state_key: migrate_upgrade_6
 process:
   nid: nid
   vid: vid
@@ -40,4 +39,4 @@ migration_dependencies:
     - d6_file
     - 'd6_node:*'
     - d6_upload_field_instance
-migration_group: null
+migration_group: gall

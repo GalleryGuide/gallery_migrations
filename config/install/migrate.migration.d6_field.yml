@@ -15,7 +15,6 @@ source:
   constants:
     entity_type: node
     langcode: en
-  database_state_key: migrate_upgrade_6
 process:
   entity_type:
     -
@@ -156,4 +155,4 @@ destination:
   plugin: 'md_entity:field_storage_config'
 template: d6_field
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

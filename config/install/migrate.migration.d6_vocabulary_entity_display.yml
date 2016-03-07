@@ -20,7 +20,6 @@ source:
       label: hidden
       type: entity_reference_label
       weight: 20
-  database_state_key: migrate_upgrade_6
 process:
   entity_type: constants/entity_type
   view_mode: constants/view_mode
@@ -36,4 +35,4 @@ template: d6_vocabulary_entity_display
 migration_dependencies:
   required:
     - d6_vocabulary_field_instance
-migration_group: null
+migration_group: gall

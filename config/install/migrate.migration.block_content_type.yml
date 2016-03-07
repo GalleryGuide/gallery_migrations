@@ -18,7 +18,6 @@ source:
   ids:
     id:
       type: string
-  database_state_key: migrate_upgrade_6
 process:
   id: id
   label: label
@@ -26,4 +25,4 @@ destination:
   plugin: 'entity:block_content_type'
 template: block_content_type
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

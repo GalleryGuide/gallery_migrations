@@ -19,7 +19,6 @@ source:
     entity_type: node
     label: Comments
     required: true
-  database_state_key: migrate_upgrade_6
 process:
   entity_type: constants/entity_type
   label: constants/label
@@ -51,4 +50,4 @@ migration_dependencies:
   required:
     - d6_comment_field
     - d6_node_type
-migration_group: null
+migration_group: gall

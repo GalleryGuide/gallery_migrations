@@ -22,7 +22,6 @@ source:
     - site_404
     - drupal_weight_select_max
     - admin_compact_mode
-  database_state_key: migrate_upgrade_6
 process:
   name: site_name
   mail: site_mail
@@ -49,4 +48,4 @@ destination:
   config_name: system.site
 template: d6_system_site
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

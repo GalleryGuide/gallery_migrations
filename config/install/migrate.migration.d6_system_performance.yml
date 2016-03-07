@@ -17,7 +17,6 @@ source:
     - cache_lifetime
     - cache
     - page_compression
-  database_state_key: migrate_upgrade_6
 process:
   css/preprocess: preprocess_css
   js/preprocess: preprocess_js
@@ -28,4 +27,4 @@ destination:
   config_name: system.performance
 template: d6_system_performance
 migration_dependencies: {  }
-migration_group: null
+migration_group: gall

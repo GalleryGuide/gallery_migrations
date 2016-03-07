@@ -15,7 +15,6 @@ migration_tags:
 label: 'Nodes (link)'
 source:
   plugin: d6_node
-  database_state_key: migrate_upgrade_6
   node_type: link
 process:
   nid: nid
@@ -57,4 +56,4 @@ migration_dependencies:
     - d6_field_instance_widget_settings
     - d6_field_formatter_settings
     - d6_upload_field_instance
-migration_group: null
+migration_group: gall
