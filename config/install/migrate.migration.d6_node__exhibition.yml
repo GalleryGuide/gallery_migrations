@@ -57,6 +57,7 @@ migration_dependencies:
   required:
     - d6_user
     - d6_node_settings
+    - d6_node_gallery
   optional:
     - d6_field_instance_widget_settings
     - d6_field_formatter_settings
