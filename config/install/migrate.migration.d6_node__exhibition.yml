@@ -3,7 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - migrate.migration.d6_filter_format
     - migrate.migration.d6_node_settings
+    - migrate.migration.d6_node_type
     - migrate.migration.d6_user
   module:
     - node
@@ -40,7 +42,11 @@ process:
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp
-  field_exhib_gallery: field_exhib_gallery
+  field_exhib_gallery:
+    plugin: iterator
+    source: field_exhib_gallery
+    process:
+      target_id: nid
   field_exhib_website:
     plugin: d6_cck_link
     source: field_exhib_website
@@ -56,8 +62,10 @@ template: d6_node
 migration_dependencies:
   required:
     - d6_user
-    - d6_node_settings
     - d6_node_gallery
+    - d6_node_type
+    - d6_node_settings
+    - d6_filter_format
   optional:
     - d6_field_instance_widget_settings
     - d6_field_formatter_settings
