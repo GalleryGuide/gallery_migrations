@@ -2,11 +2,6 @@ uuid: 1bcb3d65-5272-457e-9903-3abd05382472
 langcode: en
 status: true
 dependencies:
-  config:
-    - migrate.migration.d6_filter_format
-    - migrate.migration.d6_node_settings
-    - migrate.migration.d6_node_type
-    - migrate.migration.d6_user
   module:
     - gallery_migrations
     - node
@@ -28,7 +23,9 @@ process:
     source: language
     default_value: und
   title: title
-  uid: node_uid
+  uid:
+    plugin: default_value
+    default_value: 1
   status: status
   created: created
   changed: changed
@@ -40,7 +37,9 @@ process:
     source: format
   body/value: body
   body/summary: teaser
-  revision_uid: revision_uid
+  revision_uid:
+    plugin: default_value
+    default_value: 1
   revision_log: log
   revision_timestamp: timestamp
   field_sort_name: field_sort_name
@@ -76,18 +75,10 @@ process:
     plugin: d6_cck_file
     source: field_images
   field_email: field_email
-  field_owner: field_owner
 destination:
   plugin: 'entity:node'
 template: d6_node
 migration_dependencies:
   required:
-    - d6_user
     - d6_node_type
-    - d6_node_settings
-    - d6_filter_format
-  optional:
-    - d6_field_instance_widget_settings
-    - d6_field_formatter_settings
-    - d6_upload_field_instance
 migration_group: gall

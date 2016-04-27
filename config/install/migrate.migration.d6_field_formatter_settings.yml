@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - migrate.migration.d6_field_instance
-    - migrate.migration.d6_view_modes
   module:
     - field
     - node
