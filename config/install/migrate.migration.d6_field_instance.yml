@@ -64,3 +64,5 @@ migration_dependencies:
     - d6_node_type
     - d6_field
 migration_group: gall
+_core:
+  default_config_hash: V0FkZP-9AHHmava81JfwQ09geTpph96QP7pEnTrxRd4

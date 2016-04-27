@@ -156,3 +156,5 @@ destination:
 template: d6_field
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: wmnr7xtXFkLKMcQ-tewn4N4Dkh0tWJ7SoqTz9q3bWks

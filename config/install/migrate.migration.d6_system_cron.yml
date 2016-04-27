@@ -24,3 +24,5 @@ destination:
 template: d6_system_cron
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: 2ZcZDIpWTmc3W8ITAtgpH6mniX29Hpiw6ZzIBWh1bQY

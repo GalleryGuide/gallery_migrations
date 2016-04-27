@@ -7,7 +7,7 @@ dependencies:
   module:
     - user
 _core:
-  default_config_hash: qmgvYsna2y7NciVE9iwwUcCxt2XVALQSu0vsskWKPIw
+  default_config_hash: jvbJ11qWr6dSlYMUwya1zw888gBMP2kh0vsRAfBrYj8
 id: d6_user
 migration_tags:
   - 'Drupal 6'

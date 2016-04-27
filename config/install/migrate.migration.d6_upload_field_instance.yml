@@ -42,3 +42,5 @@ migration_dependencies:
     - d6_upload_field
     - d6_node_type
 migration_group: gall
+_core:
+  default_config_hash: A7zLPcixbXt8dfHoh4pM1uNE8KKh3iog1jd9sxrDF8U

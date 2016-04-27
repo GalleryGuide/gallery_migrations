@@ -49,3 +49,5 @@ destination:
 template: d6_system_site
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: NsQ2vsvwDnwZmuYJAghwBYGmb3Vt5OmEDV6IPYhwrFI

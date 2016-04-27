@@ -22,3 +22,5 @@ destination:
 template: menu_settings
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: no2pii033DmEWBLN4nmVk_yTqsStqCKjQqLbAEr7Zxk

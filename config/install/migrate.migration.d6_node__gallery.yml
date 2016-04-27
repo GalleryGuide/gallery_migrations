@@ -11,7 +11,7 @@ dependencies:
     - gallery_migrations
     - node
 _core:
-  default_config_hash: 9gd2ZOsdaToxP9KORXjK7vK69aokm0yQ7Wrwn7S3TQ0
+  default_config_hash: z0_KsQaZWGpqHdxPt4hoAMsbZed-fmtw0ttw1phWQHU
 id: d6_node__gallery
 migration_tags:
   - 'Drupal 6'

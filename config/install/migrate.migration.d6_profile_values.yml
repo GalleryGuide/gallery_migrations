@@ -29,3 +29,5 @@ migration_dependencies:
     - user_profile_entity_display
     - user_profile_entity_form_display
 migration_group: gall
+_core:
+  default_config_hash: FzAYWR30dXv2xJl1F2h1ThfOuiWIjMogNLWkoXUTtYo

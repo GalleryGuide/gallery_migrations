@@ -22,3 +22,5 @@ destination:
 template: text_settings
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: C3aN6fz9qWiLUF0zg3mFj8y23LG_M_5Qvz5kqMS1BFI

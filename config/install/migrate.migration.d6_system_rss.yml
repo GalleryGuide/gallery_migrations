@@ -23,3 +23,5 @@ destination:
 template: d6_system_rss
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: Dc0ILyZjV-4AbFUhUpsiIK6P4ZVcfekstknCulcgTSY

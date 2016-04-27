@@ -303,3 +303,5 @@ migration_dependencies:
     - d6_field_instance
     - d6_view_modes
 migration_group: gall
+_core:
+  default_config_hash: TnfkmURzcYkZH-64-4WTJUzG6RZvNxJDYyGKbvUO1Vw

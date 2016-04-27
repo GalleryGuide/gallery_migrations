@@ -27,3 +27,5 @@ destination:
 template: d6_system_date
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: prbhqBmv0X3BrgxAQdsZUquB-HO_9WHNcaycfYmjSwY

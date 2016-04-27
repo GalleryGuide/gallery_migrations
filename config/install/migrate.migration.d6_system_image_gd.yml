@@ -21,3 +21,5 @@ destination:
 template: d6_system_image_gd
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: ck4KESgUhEHkA0FkB25RnJYkY4Xo128Ht3X7GhB0WZg

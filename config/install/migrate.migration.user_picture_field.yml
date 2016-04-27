@@ -29,3 +29,5 @@ destination:
 template: user_picture_field
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: DDRqN3JJlGoIvcdNyrjq-KV8-8M4amIWfdkyn1qaYxs

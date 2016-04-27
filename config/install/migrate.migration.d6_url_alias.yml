@@ -31,3 +31,5 @@ destination:
 template: d6_url_alias
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: ZC7n1GjEgFQmUDxPODZlXN7Q7aCXN6XkLM1Z0c3VK8s

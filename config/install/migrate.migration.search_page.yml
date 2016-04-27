@@ -34,3 +34,5 @@ destination:
 template: search_page
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: AFEXJmdw2PS1-BWdEB0oYUI8uTY_obsM-l44NP_cA4Q

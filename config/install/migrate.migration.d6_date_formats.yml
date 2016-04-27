@@ -29,3 +29,5 @@ destination:
 template: d6_date_formats
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: WNtVgHXz-9RyMCCliqJ8L5gxWJZ5hd2th_75no78ckA

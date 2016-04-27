@@ -6,7 +6,7 @@ dependencies:
     - migrate_drupal
     - user
 _core:
-  default_config_hash: jWeiyelVrTp7wvpxAW-sUOO6aBejcz15Ds9Yvw0sGSQ
+  default_config_hash: FOpKBC7xNJhX5emZvYT9hdrzgMz1Zna_3TNkN9SFqUk
 id: d6_user_settings
 migration_tags:
   - 'Drupal 6'

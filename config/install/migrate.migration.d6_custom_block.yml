@@ -33,3 +33,5 @@ migration_dependencies:
     - d6_filter_format
     - block_content_body_field
 migration_group: gall
+_core:
+  default_config_hash: LMY9g5qJhazDkbUQ1pR3WTE7OJStAGrhSXeBZ89WeAo

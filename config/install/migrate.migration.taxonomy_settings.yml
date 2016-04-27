@@ -24,3 +24,5 @@ destination:
 template: taxonomy_settings
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: dXB8rygi01tltpGbqKcL1q4Ssr3I2YtGCb9WHTPt6O0

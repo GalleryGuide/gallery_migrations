@@ -25,3 +25,5 @@ destination:
 template: d6_file_settings
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: kyR0QGEeXWugOuT2-Cc9SR5XAm_s04ny6Xt-F3bINtg

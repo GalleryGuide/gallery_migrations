@@ -75,3 +75,5 @@ destination:
 template: d6_user_mail
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: T5f-SW1QXvqwBsAusg8rjrtLSL3D7Tg8ntRoSEvikTU

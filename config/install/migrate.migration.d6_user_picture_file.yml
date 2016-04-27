@@ -32,3 +32,5 @@ migration_dependencies:
   optional:
     - d6_file
 migration_group: gall
+_core:
+  default_config_hash: RhfQb4EFkoxlU7PIsJSfW9t8p7pb97KZ1W_bJSfW8Wo

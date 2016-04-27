@@ -33,3 +33,5 @@ migration_dependencies:
   required:
     - d6_taxonomy_vocabulary
 migration_group: gall
+_core:
+  default_config_hash: 6NOVn2qzlh0q6YXMOSQ6oG83LxwagPv0SuGfHlO2QNk

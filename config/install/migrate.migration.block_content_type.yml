@@ -26,3 +26,5 @@ destination:
 template: block_content_type
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: eYR-ms8Ac2tiXmzGmiCLVY9hTTpzTkCPU-Qi-zbKbAY

@@ -36,3 +36,5 @@ migration_dependencies:
   required:
     - d6_upload_field_instance
 migration_group: gall
+_core:
+  default_config_hash: CrcDNcvSoOwbAYC1-eWJjhqv3Vt1ptLDPPHidLAXxWc

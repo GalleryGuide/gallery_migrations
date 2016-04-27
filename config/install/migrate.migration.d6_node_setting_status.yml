@@ -27,3 +27,5 @@ migration_dependencies:
   required:
     - d6_node_type
 migration_group: gall
+_core:
+  default_config_hash: L1vwyuLjGZWOY-OnzWg5VxYl3gyUagsKEyB0f2yc1eU

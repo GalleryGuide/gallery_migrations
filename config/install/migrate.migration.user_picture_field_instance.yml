@@ -40,3 +40,5 @@ migration_dependencies:
   required:
     - user_picture_field
 migration_group: gall
+_core:
+  default_config_hash: DpJtSgu0mSZIf_rL3gg5m_xJA-G34Lt-73S2PtNgxiw

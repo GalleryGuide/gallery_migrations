@@ -43,3 +43,5 @@ migration_dependencies:
     - d6_node_type
     - d6_vocabulary_field
 migration_group: gall
+_core:
+  default_config_hash: 8pI_JSnPHpMvZpCJGiclmNdsOH9zoXAwJS-dgoe7tMY

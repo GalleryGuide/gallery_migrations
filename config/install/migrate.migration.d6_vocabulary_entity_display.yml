@@ -36,3 +36,5 @@ migration_dependencies:
   required:
     - d6_vocabulary_field_instance
 migration_group: gall
+_core:
+  default_config_hash: APw4pZ-uBAT8HupEvXjcNr-4TqmNX590R6YU2EBHYfo

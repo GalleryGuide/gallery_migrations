@@ -10,7 +10,7 @@ dependencies:
   module:
     - node
 _core:
-  default_config_hash: IeQ8pCnFj5-pDOoUwp9SaFN_yNZw7NHy6KC-yqENEm4
+  default_config_hash: MsNQTm5Iezy3j8tiJtIwIIomkE7ngufPwYX3ALd_zjg
 id: d6_node__artist
 migration_tags:
   - 'Drupal 6'

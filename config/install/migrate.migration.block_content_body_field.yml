@@ -40,3 +40,5 @@ migration_dependencies:
   required:
     - block_content_type
 migration_group: gall
+_core:
+  default_config_hash: 2wd7B1zJPaDUrF3Qm6rRk_euDKpdmgR98k8ntJLvfKw

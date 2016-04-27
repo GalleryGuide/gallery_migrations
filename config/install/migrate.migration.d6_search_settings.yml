@@ -30,3 +30,5 @@ destination:
 template: d6_search_settings
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: fCY0DxTZkResqnGOUsMOne08MEfGuVK-Cy9f3q6CTDM

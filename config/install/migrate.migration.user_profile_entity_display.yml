@@ -52,3 +52,5 @@ migration_dependencies:
   required:
     - user_profile_field_instance
 migration_group: gall
+_core:
+  default_config_hash: 2En5N3dkesD26a9gV4qI7c01yl6lbUmPEXLeVSybajw

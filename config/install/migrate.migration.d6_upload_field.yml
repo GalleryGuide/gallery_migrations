@@ -31,3 +31,5 @@ destination:
 template: d6_upload_field
 migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: ZUNjNRZO3ZzgPz4VljhmiKLdpJ1rDcXVfo87XgjFWfA

@@ -1,7 +1,14 @@
+uuid: 348618b0-4354-444c-aeca-5db24732c730
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 0M7Kt_zqQKx3YNdA2kRkvxJqHzHWMxExo5ZN64pEB44
 id: gall
-label: The Gallery Guide
-description: Migrations from the Drupal 6 galleryguide.co.uk site
-source_type: Drupal 6
+label: 'The Gallery Guide'
+description: 'Migrations from the Drupal 6 galleryguide.co.uk site'
+source_type: 'Drupal 6'
+module: gallery_migrations
 shared_configuration:
   source:
     key: d6

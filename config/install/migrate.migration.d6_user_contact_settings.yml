@@ -31,3 +31,5 @@ migration_dependencies:
   required:
     - d6_user
 migration_group: gall
+_core:
+  default_config_hash: bmgmWbXHqdsqBup2stUxUATbrvmWD4ucS9PoVgtuRLk
