@@ -11,4 +11,12 @@ source_type: 'Drupal 6'
 module: gallery_migrations
 shared_configuration:
   source:
-    key: d6
+    key: drupal_6
+    database:
+      driver: mysql
+      username: root
+      password: root
+      host: localhost
+      port: ''
+      database: d6
+      prefix: drupal_
