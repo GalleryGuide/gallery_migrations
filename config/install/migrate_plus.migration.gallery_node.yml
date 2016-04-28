@@ -1,18 +1,10 @@
-uuid: 1bcb3d65-5272-457e-9903-3abd05382472
-langcode: en
-status: true
-dependencies:
-  module:
-    - gallery_migrations
-    - node
-_core:
-  default_config_hash: z0_KsQaZWGpqHdxPt4hoAMsbZed-fmtw0ttw1phWQHU
-id: d6_node__gallery
+id: gallery_node
 migration_tags:
   - 'Drupal 6'
 label: 'Nodes (gallery)'
+deriver: Drupal\node\Plugin\migrate\D6NodeDeriver
 source:
-  plugin: d6_node__gallery
+  plugin: gallery_node
   node_type: gallery
 process:
   nid: nid
@@ -32,9 +24,8 @@ process:
   promote: promote
   sticky: sticky
   body/format:
-    plugin: migration
-    migration: d6_filter_format
-    source: format
+    plugin: default_value
+    default_value: 1
   body/value: body
   body/summary: teaser
   revision_uid:
@@ -76,9 +67,8 @@ process:
     source: field_images
   field_email: field_email
 destination:
-  plugin: 'entity:node'
-template: d6_node
-migration_dependencies:
-  required:
-    - d6_node_type
+  plugin: entity:node
+migration_dependencies: {  }
 migration_group: gall
+_core:
+  default_config_hash: rnO2yzSDY8lOnRtgFCPbIC0sp7mzrYGSYpAmQhui4kI

@@ -31,3 +31,19 @@ function gallery_migrations_theme() {
 
   return $theme;
 }
+
+/**
+ * Make sure the URL has the http protocol on.
+ *
+ * @param string $url
+ *   The URL.
+ *
+ * @return string
+ *   The URL with the protocol.
+ */
+function _gallerymigrations_website_protocol($url) {
+  if (!empty($url) && substr($url, 0, 4) != 'http') {
+    $url = 'http://' . $url;
+  }
+  return $url;
+}

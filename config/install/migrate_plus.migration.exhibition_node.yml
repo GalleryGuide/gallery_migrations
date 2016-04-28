@@ -1,17 +1,10 @@
-uuid: 3d1f2a4f-6ddb-49c7-b30b-11d1273cb810
-langcode: en
-status: true
-dependencies:
-  module:
-    - node
-_core:
-  default_config_hash: TYXvuKdTCHpDTuyj5iBf07pPNxY8teCJlWNX9rH3AXc
-id: d6_node__exhibition
+id: exhibition_node
 migration_tags:
   - 'Drupal 6'
 label: 'Nodes (exhibition)'
+deriver: Drupal\node\Plugin\migrate\D6NodeDeriver
 source:
-  plugin: d6_node
+  plugin: exhibition_node
   node_type: exhibition
 process:
   nid: nid
@@ -60,5 +53,5 @@ destination:
 template: d6_node
 migration_dependencies:
   required:
-    - d6_node_gallery
+    - gallery_node
 migration_group: gall

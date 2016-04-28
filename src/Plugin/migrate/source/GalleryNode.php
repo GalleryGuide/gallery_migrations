@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\gallery_migrations\Plugin\migrate\source\Gallery.
+ * Contains \Drupal\gallery_migrations\Plugin\migrate\source\GalleryNode.
  */
 
 namespace Drupal\gallery_migrations\Plugin\migrate\source;
@@ -14,18 +14,15 @@ use Drupal\node\Plugin\migrate\source\d6\Node as D6Node;
  * Custom Drupal 6 node source from database.
  *
  * @MigrateSource(
- *   id = "d6_node__gallery"
+ *   id = "gallery_node"
  * )
  */
-class Gallery extends D6Node {
+class GalleryNode extends D6Node {
   /**
    * {@inheritdoc}
    */
   public function fields() {
     $fields = parent::fields();
-    $fields += array(
-      'merged_body' => $this->t('Merged body'),
-    );
     return $fields;
   }
 
@@ -33,9 +30,18 @@ class Gallery extends D6Node {
    * {@inheritdoc}
    */
   public function prepareRow(Row $row) {
-    $field1 = $row->getSourceProperty("field_field1");
-    $field2 = $row->getSourceProperty("field_field2");
-    $row->setDestinationProperty("merged_body", $field1 . " " . $field2);
+    if (parent::prepareRow($row) === FALSE) {
+      return FALSE;
+    }
+
+    $website = $row->getSourceProperty('field_website');
+    
+    if (!empty($website)) {
+      $url = $website[0]['url'];
+      $website[0]['url'] = _gallerymigrations_website_protocol($url);
+      $row->setSourceProperty('field_website', $website);
+    }
+    
     return parent::prepareRow($row);
   }
 }
