@@ -56,19 +56,42 @@ Surname	field_surname	Computed	Configure  Remove
     $row->setSourceProperty('vid', $vocabulary);
     
     if (!empty($term_node->field_born_value)) {
-      $row->setSourceProperty('field_born', $term_node->field_born_value);      
+
+      $born = array(
+        array(
+          'value' => $term_node->field_born_value,
+        ),
+      );
+
+      $row->setSourceProperty('field_born', $born);      
     }
 
     if (!empty($term_node->field_born_value2)) {
-      $row->setSourceProperty('field_died', $term_node->field_born_value2);
+      $died = array(
+        array(
+          'value' => $term_node->field_born_value2,
+        ),
+      );
+      
+      $row->setSourceProperty('field_died', $died);
     }
 
     if (!empty($term_node->field_artist_website_url)) {
-      $row->setSourceProperty('field_website', $term_node->field_artist_website_url);
+      $website = array(
+        array(
+          'uri' => $term_node->field_artist_website_url,          
+        ),
+      );
+      
+      $row->setSourceProperty('field_website', $website);
     }
 
     if (!empty($term_node->body)) {
-      $row->setSourceProperty('field_biography', $term_node->body);
+      $body = array(
+        'value' => $term_node->body,
+        'format' => 'filtered_html',
+      );
+      $row->setSourceProperty('description', $body);
     }
 
     return parent::prepareRow($row);
