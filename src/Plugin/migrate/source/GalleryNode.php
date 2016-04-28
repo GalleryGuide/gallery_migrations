@@ -34,8 +34,8 @@ class GalleryNode extends D6Node {
       return FALSE;
     }
 
+    // Make sure that URLs have a protocol.
     $website = $row->getSourceProperty('field_website');
-    
     if (!empty($website)) {
       $url = $website[0]['url'];
       $website[0]['url'] = _gallerymigrations_website_protocol($url);

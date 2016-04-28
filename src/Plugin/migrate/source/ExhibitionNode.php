@@ -24,9 +24,6 @@ class ExhibitionNode extends D6Node {
   public function fields() {
     $fields = parent::fields();
 
-    print_r($fields);
-    exit;
-    
     return $fields;
   }
 
@@ -34,12 +31,16 @@ class ExhibitionNode extends D6Node {
    * {@inheritdoc}
    */
   public function prepareRow(Row $row) {
-    
-    print_r($row);
-    exit;
-    
-    if ($row->nid == 511) {
-      exit;
+    if (parent::prepareRow($row) === FALSE) {
+      return FALSE;
+    }
+
+    // Make sure that URLs have a protocol.
+    $website = $row->getSourceProperty('field_exhib_website');
+    if (!empty($website)) {
+      $url = $website[0]['url'];
+      $website[0]['url'] = _gallerymigrations_website_protocol($url);
+      $row->setSourceProperty('field_exhib_website', $website);
     }
     
     return parent::prepareRow($row);
