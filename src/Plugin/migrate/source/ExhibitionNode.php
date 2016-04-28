@@ -43,6 +43,13 @@ class ExhibitionNode extends D6Node {
       $row->setSourceProperty('field_exhib_website', $website);
     }
     
+    $dates = $row->getSourceProperty('field_exhib_dates');
+    $date_from = array(array('value' => date('Y-m-d', strtotime($dates[0]['value']))));
+    $date_to = array(array('value' => date('Y-m-d', strtotime($dates[0]['value2']))));
+
+    $row->setSourceProperty('field_date_from', $date_from);
+    $row->setSourceProperty('field_date_to', $date_to);
+    
     return parent::prepareRow($row);
   }
 }

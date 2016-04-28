@@ -24,9 +24,8 @@ process:
   promote: promote
   sticky: sticky
   body/format:
-    plugin: migration
-    migration: d6_filter_format
-    source: format
+    plugin: default_value
+    default_value: filtered_html
   body/value: body
   body/summary: teaser
   revision_uid:
@@ -43,6 +42,8 @@ process:
     plugin: d6_cck_link
     source: field_exhib_website
   field_exhib_dates: field_exhib_dates
+  field_date_from: field_date_from
+  field_date_to: field_date_to
   field_admission_std: field_admission_std
   field_admission_conc: field_admission_conc
   field_images:
