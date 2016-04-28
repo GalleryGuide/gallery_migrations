@@ -27,7 +27,6 @@ process:
     plugin: default_value
     default_value: 1
   body/value: body
-  body/summary: teaser
   revision_uid:
     plugin: default_value
     default_value: 1
