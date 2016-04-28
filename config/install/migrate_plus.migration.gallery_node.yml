@@ -66,6 +66,8 @@ process:
     plugin: d6_cck_file
     source: field_images
   field_email: field_email
+  field_address: field_address
+  field_location: field_location
 destination:
   plugin: entity:node
 migration_dependencies: {  }
