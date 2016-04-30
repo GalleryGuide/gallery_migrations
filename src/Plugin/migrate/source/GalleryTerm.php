@@ -35,63 +35,41 @@ class GalleryTerm extends Term {
       return FALSE;
     }
 
-    // Get the related term node.
-    
-    /*
-Fields:      
-Lived	field_born	Date	Configure  Remove
-Images	field_images	File	Configure  Remove 
-Website	field_artist_website	Link	Configure  Remove
-Body	Node module form.	  
-Surname	field_surname	Computed	Configure  Remove
-    
-     */
-    
     $tid = $row->getSourceProperty('tid');
-    $term_nid_vid = $this->getTermNidVid($tid);
-    $term_node = $this->getTermNode($term_nid_vid);
-    
     $vid = $row->getSourceProperty('vid');
     $vocabulary = $this->getVocab($vid);
     $row->setSourceProperty('vid', $vocabulary);
-    
-    if (!empty($term_node->field_born_value)) {
 
-      $born = array(
-        array(
-          'value' => $term_node->field_born_value,
-        ),
-      );
+    if ($vocabulary == 'artists') {
+      // Get the related term node.
+      $term_nid = $this->getTermNid($tid);
+      $term_vid = $this->getRevisionId($term_nid);
+      $term_node = $this->getTermNode($term_nid, $term_vid);
 
-      $row->setSourceProperty('field_born', $born);      
-    }
+      $born = $term_node->field_born_value;
+      if (!empty($born)) {
+        $year_born = (int) date('Y', strtotime($born));
+        $row->setSourceProperty('field_born', $year_born);
+      }
 
-    if (!empty($term_node->field_born_value2)) {
-      $died = array(
-        array(
-          'value' => $term_node->field_born_value2,
-        ),
-      );
-      
-      $row->setSourceProperty('field_died', $died);
-    }
+      $died = $term_node->field_born_value2;
+      if (!empty($died) && $died != $born) {
+        $year_died = (int) date('Y', strtotime($died));
+        $row->setSourceProperty('field_died', $year_died);
+      }
 
-    if (!empty($term_node->field_artist_website_url)) {
-      $website = array(
-        array(
-          'uri' => $term_node->field_artist_website_url,          
-        ),
-      );
-      
-      $row->setSourceProperty('field_website', $website);
-    }
+      $url = $term_node->field_artist_website_url;
+      if (!empty($url)) {
+        $row->setSourceProperty('field_website', $url);
+      }
 
-    if (!empty($term_node->body)) {
-      $body = array(
-        'value' => $term_node->body,
-        'format' => 'filtered_html',
-      );
-      $row->setSourceProperty('description', $body);
+      if (!empty($term_node->body)) {
+        $body = array(
+          'value' => $term_node->body,
+          'format' => 'filtered_html',
+        );
+        $row->setSourceProperty('description', $body);
+      }
     }
 
     return parent::prepareRow($row);
@@ -103,17 +81,45 @@ Surname	field_surname	Computed	Configure  Remove
    * @param int $tid
    *   The term ID.
    *
-   * @return Object
-   *   The database result row object.
+   * @return int
+   *   The node ID.
    */
-  protected function getTermNidVid($tid) {
+  protected function getTermNid($tid) {
     \Drupal\Core\Database\Database::setActiveConnection('d6');
     $db = \Drupal\Core\Database\Database::getConnection();
 
-    $query = $db->select('term_node', 'tn');
+    $query = $db->select('taxonomynode', 'tn');
     $query->condition('tid', $tid)
       ->fields('tn', array(
         'nid',
+      ));
+
+    $result = $query->execute();
+
+    \Drupal\Core\Database\Database::setActiveConnection();
+
+    $data = array();
+    foreach ($result as $row) {
+      $data[] = $row;
+    }
+    return $data[0]->nid;
+  }
+
+  /**
+   * Get the current revision ID for a node.
+   * 
+   * @param int $nid
+   *   The node ID.
+   * @return int
+   *   The revision ID.
+   */
+  protected function getRevisionId($nid) {
+    \Drupal\Core\Database\Database::setActiveConnection('d6');
+    $db = \Drupal\Core\Database\Database::getConnection();
+
+    $query = $db->select('node', 'n');
+    $query->condition('nid', $nid)
+      ->fields('n', array(
         'vid',
       ));
 
@@ -125,20 +131,21 @@ Surname	field_surname	Computed	Configure  Remove
     foreach ($result as $row) {
       $data[] = $row;
     }
-    return $data[0];
+    return $data[0]->vid;
+    
   }
-
+  
   /**
    * Get the taxonomy term node data.
    * 
-   * @param Object $nid_vid
-   *   The database result row object with node and revision IDs.
+   * @param int $nid
+   *   The node ID.
+   * @param int $vid
+   *   The relevant revision ID.
    * @return Object
    *   The database result row object for the taxonomy term node.
    */
-  protected function getTermNode($nid_vid) {
-    $nid = $nid_vid->nid;
-    $vid = $nid_vid->vid;
+  protected function getTermNode($nid, $vid) {
     \Drupal\Core\Database\Database::setActiveConnection('d6');
     $db = \Drupal\Core\Database\Database::getConnection();
 
@@ -164,7 +171,6 @@ Surname	field_surname	Computed	Configure  Remove
       $data[] = $row;
     }
     return $data[0];
-
   }
 
   /**
