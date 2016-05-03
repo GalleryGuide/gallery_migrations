@@ -1,0 +1,37 @@
+uuid: 2ce3c8ed-935e-4e5d-b207-7cf854955653
+langcode: en
+status: true
+dependencies:
+  config:
+    - migrate_plus.migration.exhibition_node
+    - migrate_plus.migration.gallery_node
+    - migrate_plus.migration.upgrade_d6_taxonomy_term
+  module:
+    - node
+    - taxonomy
+id: term_node_artists
+migration_tags:
+  - 'Drupal 6'
+label: 'Term/node relationships for artists'
+source:
+  plugin: d6_term_node
+  vid: 2
+process:
+  nid:
+    -
+      plugin: migration
+      migration: 'd6_node:*'
+      source: nid
+    -
+      plugin: skip_on_empty
+      method: row
+  type: type
+  artists: tid
+destination:
+  plugin: 'entity:node'
+template: d6_term_node
+migration_dependencies:
+  required:
+    - upgrade_d6_taxonomy_term
+    - 'd6_node:*'
+migration_group: gall
