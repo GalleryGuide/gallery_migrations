@@ -60,42 +60,43 @@ class GalleryNode extends D6Node {
    * Get the location for this node from the D6 database. 
    * 
    * @param int $nid
+   *   The node ID of the gallery.
    * 
-   * @return array
+   * @return Object
+   *   The database row for the location.
    */
   protected function getLocation($nid) {
-    // Get the location ID.
-    
-    // select * from drupal_location where lid = (select lid from drupal_location_instance where nid = 5732)\G
+    // Switch connection to access the D6 database.
     \Drupal\Core\Database\Database::setActiveConnection('d6');
     $db = \Drupal\Core\Database\Database::getConnection();
 
     $query = $db->select('location_instance', 'li');
     $query->join('location', 'l', 'l.lid = li.lid');
-    $query->condition('nid', $nid)
-      ->fields('l', array(
-        'lid',
-        'name',
-        'street',
-        'additional',
-        'city',
-        'province',
-        'postal_code',
-        'country',
-        'latitude',
-        'longitude',
-        'source',
-      ));
+    $query->condition('nid', $nid);
+    $query->fields('l', array(
+      'name',
+      'street',
+      'additional',
+      'city',
+      'province',
+      'postal_code',
+      'country',
+      'latitude',
+      'longitude',
+      'source',
+    ));
     
     $result = $query->execute();
     
+    // Revert to the default database connection.
     \Drupal\Core\Database\Database::setActiveConnection();
 
-    $data = array();
-    
+    $data = array();    
     foreach ($result as $row) {
       $data[] = $row;
     }
+    
+    // There should be only one row, so return that.
     return $data[0];
   }
 
