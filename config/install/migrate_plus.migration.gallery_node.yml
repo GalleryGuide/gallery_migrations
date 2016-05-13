@@ -60,11 +60,7 @@ process:
             - d7_filter_format
           source: format
   field_admission_conc: field_admission_conc
-  field_openingtimes:
-    plugin: iterator
-    source: field_openingtimes
-    process:
-      value: value
+  field_openingtimes: field_openingtimes
   field_images:
     plugin: d6_cck_file
     source: field_images
