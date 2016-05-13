@@ -36,7 +36,11 @@ process:
   field_website:
     plugin: d6_cck_link
     source: field_website
-  field_associated: field_associated
+  field_associated:
+    plugin: iterator
+    source: field_associated
+    process:
+      target_id: nid
   field_admission_std: field_admission_std
   field_facilities:
     plugin: iterator
