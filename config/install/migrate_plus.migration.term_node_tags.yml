@@ -12,19 +12,13 @@ dependencies:
 id: term_node_tags
 migration_tags:
   - 'Drupal 6'
+deriver: Drupal\taxonomy\Plugin\migrate\D6TermNodeDeriver
 label: 'Term/node relationships for tags'
 source:
-  plugin: d6_term_node
+  plugin: term_node_tags
   vid: 3
 process:
-  nid:
-    -
-      plugin: migration
-      migration: 'd6_node:*'
-      source: nid
-    -
-      plugin: skip_on_empty
-      method: row
+  nid: nid
   type: type
   tags: tid
 destination:
