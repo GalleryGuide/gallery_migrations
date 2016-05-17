@@ -24,15 +24,6 @@ function gallery_migrations_help($route_name, RouteMatchInterface $route_match) 
 }
 
 /**
- * Implements hook_theme().
- */
-function gallery_migrations_theme() {
-  $theme = [];
-
-  return $theme;
-}
-
-/**
  * Make sure the URL has the http protocol on.
  *
  * @param string $url
