@@ -79,7 +79,6 @@ class GalleryTerm extends Term {
         $row->setSourceProperty('description', $body);
       }
 
-      // Update the term node alias to point to the term.
       $alias = $this->getArtistUrl($term_nid);
       if (!empty($alias)) {
 
@@ -87,6 +86,13 @@ class GalleryTerm extends Term {
         $term_alias = '/taxonomy/term/' . $tid;
 
         $connection = Database::getConnection();
+
+        // Delete existing aliases to the term.
+        $connection->delete('url_alias')
+          ->condition('source', $term_alias)
+          ->execute();
+
+        // Update the term node alias to point to the term.
         $connection->update('url_alias')
           ->fields(array('source' => $term_alias))
           ->condition('source', $node_alias)
