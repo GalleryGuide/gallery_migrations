@@ -84,7 +84,7 @@ class GalleryTerm extends Term {
       if (!empty($alias)) {
 
         $node_alias = '/node/' . $term_nid;
-        $term_alias = '/taxonomy/term' . $tid;
+        $term_alias = '/taxonomy/term/' . $tid;
 
         $connection = Database::getConnection();
         $connection->update('url_alias')
