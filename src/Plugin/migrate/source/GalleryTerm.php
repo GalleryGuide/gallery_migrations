@@ -10,6 +10,7 @@ namespace Drupal\gallery_migrations\Plugin\migrate\source;
 use Drupal\migrate\Row;
 use Drupal\taxonomy\Plugin\migrate\source\Term;
 use Drupal\Core\Database\Database;
+use Drupal\file\Entity\File;
 
 /**
  * Custom Drupal 6 term source from database.
@@ -48,10 +49,38 @@ class GalleryTerm extends Term {
       $term_vid = $this->getRevisionId($term_nid);
       $term_node = $this->getTermNode($term_nid, $term_vid);
 
-      // TODO: this still isn't working...
       $images = $this->getArtistImages($term_nid);
       if (!empty($images)) {
-        $row->setSourceProperty('field_images', $images);
+        $connection = Database::getConnection();
+
+        foreach ($images as $delta => $image) {
+
+          $file = File::load($image['fid']);
+          $image_file = \Drupal::service('image.factory')->get($file->getFileUri());
+
+          $width = $image_file->getWidth();
+          $height = $image_file->getHeight();
+
+          if (!empty($width) && !empty($height)) {
+
+            $connection->merge('taxonomy_term__field_image')
+              ->condition('entity_id', $tid)
+              ->fields(array(
+                'bundle' => 'artist',
+                'deleted' => 0,
+                'entity_id' => $tid,
+                'revision_id' => $tid,
+                'langcode' => 'en',
+                'delta' => $delta,
+                'field_image_target_id' => $image['fid'],
+                'field_image_alt' => !empty($image['data']['description']) ? $image['data']['description'] : '',
+                'field_image_title' => !empty($image['data']['description']) ? $image['data']['description'] : '',
+                'field_image_width' => $width,
+                'field_image_height' => $height,
+              ))
+              ->execute();
+          }
+        }
       }
 
       $born = $term_node->field_born_value;
@@ -105,7 +134,7 @@ class GalleryTerm extends Term {
 
   /**
    * Get the relevant node and revision IDs for a taxonomy term node.
-   * 
+   *
    * @param int $tid
    *   The term ID.
    *
@@ -135,7 +164,7 @@ class GalleryTerm extends Term {
 
   /**
    * Get the current revision ID for a node.
-   * 
+   *
    * @param int $nid
    *   The node ID.
    * @return int
@@ -160,12 +189,12 @@ class GalleryTerm extends Term {
       $data[] = $row;
     }
     return $data[0]->vid;
-    
+
   }
-  
+
   /**
    * Get the taxonomy term node data.
-   * 
+   *
    * @param int $nid
    *   The node ID.
    * @param int $vid
@@ -193,7 +222,7 @@ class GalleryTerm extends Term {
     $result = $query->execute();
 
     \Drupal\Core\Database\Database::setActiveConnection();
-    
+
     $data = array();
     foreach ($result as $row) {
       $data[] = $row;
@@ -203,7 +232,7 @@ class GalleryTerm extends Term {
 
   /**
    * Convert a D6 vocabulary ID to a D8 vocabulary name.
-   * 
+   *
    * @param int $vid
    *   The D6 vocabulary ID.
    *
@@ -216,9 +245,9 @@ class GalleryTerm extends Term {
 
     $query = $db->select('vocabulary', 'v');
     $query->fields('v', array(
-        'vid',
-        'name',
-      ));
+      'vid',
+      'name',
+    ));
 
     $result = $query->execute();
 
@@ -227,10 +256,10 @@ class GalleryTerm extends Term {
     $data = array();
     foreach ($result as $row) {
       $old_vid = $row->vid;
-      
+
       $data[$old_vid] = strtolower($row->name);
     }
-    
+
     return $data[$vid];
   }
 
@@ -288,12 +317,14 @@ class GalleryTerm extends Term {
 
     $data = array();
     foreach ($result as $key => $row) {
-      $data[$key] = array(
-        'delta' => $key,
-        'fid' => $row->field_images_fid,
-        'list' => 1,
-        'data' => $row->field_images_data,
-      );
+      if (!empty($row->field_images_fid)) {
+        $data[$key] = array(
+          'delta' => $key,
+          'fid' => $row->field_images_fid,
+          'list' => 1,
+          'data' => unserialize($row->field_images_data),
+        );
+      }
     }
     return $data;
   }
