@@ -65,7 +65,9 @@ class GalleryTerm extends Term {
 
             $connection->merge('taxonomy_term__field_image')
               ->condition('entity_id', $tid)
+              ->condition('deleted', 0)
               ->condition('delta', $delta)
+              ->condition('langcode', 'en')
               ->fields(array(
                 'bundle' => 'artist',
                 'deleted' => 0,
