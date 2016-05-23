@@ -386,10 +386,12 @@ class GalleryTerm extends TermMigration {
 
     $artist = Term::load($tid);
 
-    foreach ($tags as $tag_tid => $tag) {
-      $artist->field_tags[] = $tag_tid;
-    }
+    if (!empty($artist)) {
+      foreach ($tags as $tag_tid => $tag) {
+        $artist->field_tags[] = $tag_tid;
+      }
 
-    $artist->save();
+      $artist->save();
+    }
   }
 }
