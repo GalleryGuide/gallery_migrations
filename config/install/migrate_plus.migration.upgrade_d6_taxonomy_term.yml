@@ -15,7 +15,9 @@ process:
   name: name
   description: description
   field_biography: field_biography
-  field_image: field_image
+  field_image:
+    plugin: d6_cck_file
+    source: field_image
   field_tags: field_tags
   field_born: field_born
   field_died: field_died
