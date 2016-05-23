@@ -1,0 +1,35 @@
+uuid: 759ca62e-fec8-4a07-b74c-769e8977f055
+langcode: en
+status: true
+dependencies:
+  module:
+    - path
+id: d6_url_alias
+migration_tags:
+  - 'Drupal 6'
+label: 'URL aliases'
+source:
+  plugin: d6_url_alias
+  constants:
+    slash: /
+process:
+  source:
+    plugin: concat
+    source:
+      - constants/slash
+      - src
+  alias:
+    plugin: concat
+    source:
+      - constants/slash
+      - dst
+  langcode:
+    plugin: d6_url_alias_language
+    source: language
+destination:
+  plugin: url_alias
+template: d6_url_alias
+migration_dependencies: {  }
+migration_group: gall
+_core:
+  default_config_hash: ZC7n1GjEgFQmUDxPODZlXN7Q7aCXN6XkLM1Z0c3VK8s
