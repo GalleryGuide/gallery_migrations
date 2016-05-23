@@ -8,7 +8,8 @@
 namespace Drupal\gallery_migrations\Plugin\migrate\source;
 
 use Drupal\migrate\Row;
-use Drupal\taxonomy\Plugin\migrate\source\Term;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\Plugin\migrate\source\Term as TermMigration;
 use Drupal\Core\Database\Database;
 use Drupal\file\Entity\File;
 
@@ -19,7 +20,7 @@ use Drupal\file\Entity\File;
  *   id = "upgrade_d6_taxonomy_term"
  * )
  */
-class GalleryTerm extends Term {
+class GalleryTerm extends TermMigration {
   /**
    * {@inheritdoc}
    */
@@ -56,10 +57,12 @@ class GalleryTerm extends Term {
         foreach ($images as $delta => $image) {
 
           $file = File::load($image['fid']);
-          $image_file = \Drupal::service('image.factory')->get($file->getFileUri());
+          if (!empty($file)) {
+            $image_file = \Drupal::service('image.factory')->get($file->getFileUri());
 
-          $width = $image_file->getWidth();
-          $height = $image_file->getHeight();
+            $width = $image_file->getWidth();
+            $height = $image_file->getHeight();
+          }
 
           if (!empty($width) && !empty($height)) {
 
@@ -101,6 +104,11 @@ class GalleryTerm extends Term {
       $url = $term_node->field_artist_website_url;
       if (!empty($url)) {
         $row->setSourceProperty('field_website', $url);
+      }
+
+      $tags = $this->getArtistTags($term_nid);
+      if (!empty($tags)) {
+        $this->storeArtistTags($tid, $tags);
       }
 
       if (!empty($term_node->body)) {
@@ -330,5 +338,58 @@ class GalleryTerm extends Term {
       }
     }
     return $data;
+  }
+
+  /**
+   * Get tags applied to a taxonomy node.
+   *
+   * @param int $nid
+   *   The node ID.
+   * @return array
+   *   An array of terms
+   */
+  protected function getArtistTags($nid) {
+    \Drupal\Core\Database\Database::setActiveConnection('d6');
+    $db = \Drupal\Core\Database\Database::getConnection();
+
+    $query = $db->select('term_node', 'tn');
+    $query->condition('nid', $nid);
+    $query->fields('tn', array(
+      'tid',
+    ));
+
+    $result = $query->execute();
+
+    \Drupal\Core\Database\Database::setActiveConnection();
+
+    $data = array();
+    foreach ($result as $row) {
+      if (!empty($row->tid)) {
+        $data[$row->tid] = array(
+          'tid' => $row->tid,
+        );
+      }
+    }
+    return $data;
+  }
+
+  /**
+   * Save tags onto an artist term.
+   *
+   * @param int $tid
+   *   The term ID.
+   *
+   * @param array $tags
+   *   List of term IDs to assign.
+   */
+  protected function storeArtistTags($tid, $tags) {
+
+    $artist = Term::load($tid);
+
+    foreach ($tags as $tag_tid => $tag) {
+      $artist->field_tags[] = $tag_tid;
+    }
+
+    $artist->save();
   }
 }
