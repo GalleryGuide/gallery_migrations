@@ -5,6 +5,12 @@ core: 8.x
 package: The Gallery Guide
 
 dependencies:
+  - field
+  - image
+  - migrate_drupal
   - migrate_plus
   - migrate_tools
   - migrate_upgrade
+  - path
+  - search
+  - user
