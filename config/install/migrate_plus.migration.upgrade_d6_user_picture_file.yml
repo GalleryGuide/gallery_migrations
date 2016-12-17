@@ -1,0 +1,46 @@
+uuid: 631dcbaf-4367-43e7-8950-7c240ba70cb4
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d6_user_picture_file
+class: null
+migration_tags:
+  - 'Drupal 6'
+migration_group: migrate_drupal_6
+label: 'User pictures'
+source:
+  plugin: d6_user_picture_file
+  constants:
+    is_public: true
+    source_base_path: ''
+process:
+  filename: filename
+  uid: uid
+  source_full_path:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/source_base_path
+        - picture
+    -
+      plugin: urlencode
+  destination_full_path:
+    plugin: file_uri
+    source:
+      - picture
+      - file_directory_path
+      - temp_directory_path
+      - constants/is_public
+  uri:
+    plugin: file_copy
+    source:
+      - '@source_full_path'
+      - '@destination_full_path'
+destination:
+  plugin: 'entity:file'
+  source_base_path: 'http://d6.dev/'
+migration_dependencies:
+  optional:
+    - upgrade_d6_file
+  required: {  }
