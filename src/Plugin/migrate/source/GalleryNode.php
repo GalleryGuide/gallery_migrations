@@ -41,15 +41,15 @@ class GalleryNode extends D6Node {
       $website[0]['url'] = _gallerymigrations_website_protocol($url);
       $row->setSourceProperty('field_website', $website);
     }
-    
+
     // Get the location data from the D6 database.
-    $nid = $row->getSourceProperty('nid');    
+    $nid = $row->getSourceProperty('nid');
     $location = $this->getLocation($nid);
-    
+
     // Set up latitude and longitude for use with geolocation module.
     $geolocation = $this->prepareGeoLocation($location->latitude, $location->longitude);
     $row->setSourceProperty('field_location', $geolocation);
-    
+
     $address = $this->prepareAddress($location);
     $row->setSourceProperty('field_address', $address);
 
@@ -57,17 +57,17 @@ class GalleryNode extends D6Node {
   }
 
   /**
-   * Get the location for this node from the D6 database. 
-   * 
+   * Get the location for this node from the D6 database.
+   *
    * @param int $nid
    *   The node ID of the gallery.
-   * 
+   *
    * @return Object
    *   The database row for the location.
    */
   protected function getLocation($nid) {
     // Switch connection to access the D6 database.
-    \Drupal\Core\Database\Database::setActiveConnection('d6');
+    \Drupal\Core\Database\Database::setActiveConnection('migrate');
     $db = \Drupal\Core\Database\Database::getConnection();
 
     $query = $db->select('location_instance', 'li');
@@ -85,24 +85,24 @@ class GalleryNode extends D6Node {
       'longitude',
       'source',
     ));
-    
+
     $result = $query->execute();
-    
+
     // Revert to the default database connection.
     \Drupal\Core\Database\Database::setActiveConnection();
 
-    $data = array();    
+    $data = array();
     foreach ($result as $row) {
       $data[] = $row;
     }
-    
+
     // There should be only one row, so return that.
     return $data[0];
   }
 
   /**
    * Prepare geolocation data for use in D8 geolocation field.
-   * 
+   *
    * @param string $latitude
    * @param string $longitude
    * @return array
@@ -120,7 +120,7 @@ class GalleryNode extends D6Node {
 
   /**
    * Prepare data from a location object for an address field.
-   * 
+   *
    * @param Object $location
    *   The location object, selected from the D6 database.
    *
@@ -146,19 +146,19 @@ class GalleryNode extends D6Node {
    *
    * @param string $country
    *   The old country code.
-   * 
+   *
    * @return string
    *   The ISO country code.
    */
   protected function convertCountry($country) {
-    
+
     $country_codes = array(
       'uk' => 'GB',
       'pt' => 'PT',
       'nl' => 'NL',
     );
-    
+
     return $country_codes[$country];
   }
-  
+
 }
