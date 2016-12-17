@@ -6,7 +6,7 @@ id: upgrade_d6_user
 class: null
 migration_tags:
   - 'Drupal 6'
-migration_group: migrate_drupal_6
+migration_group: gall_users
 label: 'User accounts'
 source:
   plugin: d6_user
@@ -35,10 +35,6 @@ process:
     source: language
     fallback_to_site_default: true
   init: init
-  roles:
-    plugin: migration
-    migration: upgrade_d6_user_role
-    source: roles
   user_picture:
     plugin: migration
     migration: upgrade_d6_user_picture_file
@@ -48,10 +44,8 @@ destination:
   plugin: 'entity:user'
   md5_passwords: true
 migration_dependencies:
-  required:
-    - upgrade_d6_user_role
+  required: {  }
   optional:
     - upgrade_d6_user_picture_file
     - upgrade_user_picture_entity_display
     - upgrade_user_picture_entity_form_display
-    - upgrade_d6_user_role

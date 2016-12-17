@@ -6,7 +6,7 @@ id: upgrade_d6_user_picture_file
 class: null
 migration_tags:
   - 'Drupal 6'
-migration_group: migrate_drupal_6
+migration_group: gall_users
 label: 'User pictures'
 source:
   plugin: d6_user_picture_file

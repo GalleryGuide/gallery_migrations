@@ -2,7 +2,7 @@ uuid: 9a0c0ebf-5e95-4f74-a64a-5be0050d8b5f
 langcode: en
 status: true
 dependencies: {  }
-id: migrate_drupal_6
+id: gall_users
 label: 'Import from Drupal 6'
 description: 'Migrations originally generated from drush migrate-upgrade --configure-only'
 source_type: 'Drupal 6'
