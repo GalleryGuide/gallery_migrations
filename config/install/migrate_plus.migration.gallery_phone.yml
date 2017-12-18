@@ -1,0 +1,22 @@
+# Migration file for staff content.
+
+id: gallery_phone
+label: Gallery phone numbers
+migration_group: staff
+migration_tags:
+  - 'Drupal 6'
+source:
+  plugin: csv
+  path: 'modules/custom/gallery_migrations/import/phones.csv'
+  header_row_count: 1
+  keys:
+    - nid
+  fields:
+    nid: Node ID
+    phone: Phone number.
+destination:
+  plugin: 'entity:node'
+  default_bundle: gallery
+process:
+  nid: nid
+  field_telephone: phone

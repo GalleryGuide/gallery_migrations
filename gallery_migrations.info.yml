@@ -8,9 +8,9 @@ dependencies:
   - field
   - image
   - migrate_drupal
+  - migrate_source_csv
   - migrate_plus
   - migrate_tools
-  - migrate_upgrade
   - path
   - search
   - user
